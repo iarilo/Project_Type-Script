@@ -1,0 +1,32 @@
+{
+  "name": "projekt_node_type",
+  "version": "1.0.0",
+  "description": " Приложениена  node Type-script",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .dist/index.js",
+    "test": "projekt node type"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "projekt",
+    "node",
+    "type"
+  ],
+  "author": "Vitalii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iarilo/node_typescript/issues"
+  },
+  "homepage": "https://github.com/iarilo/node_typescript#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  }
+}
