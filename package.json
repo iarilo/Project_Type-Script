@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": " Приложениена  node Type-script",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "node .dist/index.js",
+    "start": "node ./dist/main.js",
+    "build":"tsc",
     "test": "projekt node type"
   },
   "repository": {
