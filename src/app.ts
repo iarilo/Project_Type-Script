@@ -1,6 +1,6 @@
-import express,{ Express } from 'express';
+import express, { Express } from 'express';
 import { userRouter } from './users/user';
-import { Server } from 'http'
+import { Server } from 'http';
 import { LoggerService } from './loger/loger.service';
 
 export class App {
@@ -13,62 +13,19 @@ export class App {
     this.app = express();
     this.port = 8000;
     this.useLogger = logger;
- 
   }
 
-  useRoutes() {
+   useRoutes() {
     this.app.use('/user', userRouter);
   }
+
+ 
 
   public async init() {
     this.useRoutes();
     this.server = this.app.listen(this.port);
-    this.useLogger.log(`Сервер запущен на  http://localhost:${this.port} порту`);
-  
+    this.useLogger.log(
+      `Сервер запущен на  http://localhost:${this.port} порту`
+    );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
