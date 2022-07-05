@@ -1,5 +1,5 @@
 
-import { Logger } from 'tslog';
+ import { Logger } from 'tslog';
 
 export class LoggerService {
   public logger: Logger;
@@ -26,8 +26,7 @@ export class LoggerService {
     this.logger.warn(...args);
   }
 }
-
-
+ 
 
 
 

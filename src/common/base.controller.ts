@@ -54,7 +54,7 @@ export abstract class BaseController {
 } */
 //-----------------------------------------------------
 
-import { Router, Response } from 'express';
+ import { Router, Response } from 'express';
 import { LoggerService } from '../loger/loger.service';
 import { IControllerRoute } from './route.interface';
 
@@ -90,5 +90,43 @@ export abstract class BaseController {
     }
   }
 }
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

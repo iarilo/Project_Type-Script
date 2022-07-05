@@ -10,14 +10,15 @@
  } */
  //------------------------------------------------
 
-   import { Router, Request, Response, NextFunction } from 'express';
+
+
+    import { Router, Request, Response, NextFunction } from 'express';
 
    export interface IControllerRoute {
      path: string;
      func: (req: Request, res: Response, next: NextFunction) => void;
      methob: keyof Pick<Router, 'get' | 'post' | 'delete' | 'patch' | 'put'>;
-   }
-
+   } 
 
 
 
