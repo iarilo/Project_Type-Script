@@ -89,10 +89,7 @@ import 'reflect-metadata';
 import { HTTPError } from '../errors/http-error-class';
 import { UserLoginDto } from './dto/user-loggin.dto';
 import { UserRegistrDto } from './dto/user-registr.dto';
-
-class User {}
-const users = [];
-
+import fs from 'fs';
 @injectable()
 export class UserController extends BaseController implements IUserController {
 	constructor(@inject(TYPES.TYILogger) private userLog: ILogger) {
@@ -105,7 +102,6 @@ export class UserController extends BaseController implements IUserController {
 	}
 
 	UserLoggin(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction): void {
-		users.push(new User());
 		//console.log(req.body);
 		// this.oK(res, 'Hellow UserLoggin');
 		next(new HTTPError(401, 'Ошибка авторизации', 'Loggin-ошибки'));
