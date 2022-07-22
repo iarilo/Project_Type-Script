@@ -87,6 +87,11 @@ import { Request, Response, NextFunction } from 'express';
 import { injectable, inject } from 'inversify';
 import 'reflect-metadata';
 import { HTTPError } from '../errors/http-error-class';
+import { UserLoginDto } from './dto/user-loggin.dto';
+import { UserRegistrDto } from './dto/user-registr.dto';
+
+class User {}
+const users = [];
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -99,12 +104,15 @@ export class UserController extends BaseController implements IUserController {
 		]);
 	}
 
-	UserLoggin(req: Request, res: Response, next: NextFunction): void {
+	UserLoggin(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction): void {
+		users.push(new User());
+		//console.log(req.body);
 		// this.oK(res, 'Hellow UserLoggin');
 		next(new HTTPError(401, 'Ошибка авторизации', 'Loggin-ошибки'));
 	}
 
-	UserRegistr(req: Request, res: Response, next: NextFunction): void {
+	UserRegistr(req: Request<{}, {}, UserRegistrDto>, res: Response, next: NextFunction): void {
+		//console.log(req.body);
 		this.oK(res, ' Hellow  UserRegistr');
 	}
 }
