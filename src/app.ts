@@ -70,6 +70,7 @@ import { UserController } from './users/users.controller';
 import { ExeptionFilter } from './errors/exeption.filter';
 import { Server } from 'http';
 import 'reflect-metadata';
+import { json } from 'body-parser';
 
 @injectable()
 export class App {
@@ -90,6 +91,10 @@ export class App {
       this.app.use('/users', this.ussContr.getConroll)
     } */
 
+	useMiddlewere(): void {
+		this.app.use(json());
+	}
+
 	appRouts(): void {
 		this.app.use('/user', this.appUserContr.bassGet);
 	}
@@ -99,6 +104,7 @@ export class App {
 	}
 
 	innit(): void {
+		this.useMiddlewere();
 		this.appRouts();
 		this.filterExe();
 		this.server = this.app.listen(this.port);

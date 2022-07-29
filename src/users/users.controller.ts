@@ -89,7 +89,8 @@ import 'reflect-metadata';
 import { HTTPError } from '../errors/http-error-class';
 import { UserLoginDto } from './dto/user-loggin.dto';
 import { UserRegistrDto } from './dto/user-registr.dto';
-import fs from 'fs';
+import { UserEntity } from './user_entity/User_Entity';
+
 @injectable()
 export class UserController extends BaseController implements IUserController {
 	constructor(@inject(TYPES.TYILogger) private userLog: ILogger) {
@@ -100,15 +101,27 @@ export class UserController extends BaseController implements IUserController {
 			{ methob: 'post', path: '/Registr', func: this.UserRegistr },
 		]);
 	}
-
 	UserLoggin(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction): void {
-		//console.log(req.body);
+		console.log(req.body);
 		// this.oK(res, 'Hellow UserLoggin');
 		next(new HTTPError(401, 'Ошибка авторизации', 'Loggin-ошибки'));
 	}
 
-	UserRegistr(req: Request<{}, {}, UserRegistrDto>, res: Response, next: NextFunction): void {
-		//console.log(req.body);
+	/* 	UserRegistr(req: Request<{}, {}, UserRegistrDto>, res: Response, next: NextFunction): void {
+		console.log(req.body);
 		this.oK(res, ' Hellow  UserRegistr');
+	}
+} */
+
+	async UserRegistr(
+		{ body }: Request<{}, {}, UserRegistrDto>,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		//console.log(req.body);
+		// новый пользователь
+		const newUser = new UserEntity(body.email, body.name);
+		await newUser.setPassword(body.password);
+		this.oK(res, newUser);
 	}
 }
